@@ -59,10 +59,18 @@
 </nav>
 <div class="container">
     <!-- Formulario principal -->
-    <form action="search" id="search" method="get">
-        <div class="row">
-            <input class="form-control" id="q" name="q" placeholder="Escribe algo que quieras buscar"
-                   type="text"/>
+    <form class="form-inline" action="search" id="search" method="get">
+        <div class="row form-group">
+            <div class="input-group">
+                <div class="input-group-addon">Query</div>
+                <input class="form-control" id="q" name="q" placeholder="Busca algo..."
+                        type="text"/>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">Max</div>
+                <input class="form-control" id="max" name="max" placeholder="Elementos (default: 10)"
+                        type="number"/>
+            </div>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row">
