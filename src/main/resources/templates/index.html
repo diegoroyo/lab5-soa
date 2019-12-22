@@ -26,7 +26,7 @@
             th:src="@{/webjars/mustache.js/mustache.js}"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-    <script id="template" type="x-tmpl-mustache">
+    <script id="template-twitter" type="x-tmpl-mustache">
 {{#.}}
  <div class="row panel panel-default">
   <div class="panel-heading">
@@ -39,6 +39,21 @@
  </div>
  {{/.}}
 
+    </script>
+
+    <script id="template-github" type="x-tmpl-mustache">
+        {{#.}}
+         <div class="row panel panel-default">
+          <div class="panel-heading">
+           <a href="https://github.com/{{user.login}}" target="_blank"><b>github.com/{{user.login}}</b></a>
+           <div class="pull-right">
+            <b>Pull request: {{title}}</b>
+           </div>
+          </div>
+          <div class="panel-body">{{body}}</div>
+         </div>
+         {{/.}}
+        
     </script>
 
     <script src="../static/functions.js" th:src="@{/functions.js}"></script>
@@ -58,8 +73,10 @@
     </div>
 </nav>
 <div class="container">
-    <!-- Formulario principal -->
-    <form class="form-inline" action="search" id="search" method="get">
+    <button id="toggle" class="row btn btn-default">Cambiar entre búsqueda de Twitter y Github</button>
+    <div class="row">&nbsp;</div>
+    <!-- Formulario principal para Twitter -->
+    <form class="form-inline" action="twitter" id="twitter" method="get">
         <div class="row form-group">
             <div class="input-group">
                 <div class="input-group-addon">Query</div>
@@ -70,6 +87,25 @@
                 <div class="input-group-addon">Max</div>
                 <input class="form-control" id="max" name="max" placeholder="Elementos (default: 10)"
                         type="number"/>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <button class="btn btn-default center-block" type="submit">Buscar</button>
+        </div>
+    </form>
+    <!-- Formulario principal para Github -->
+    <form class="form-inline hidden" action="github" id="github" method="get">
+        <div class="row form-group">
+            <div class="input-group">
+                <div class="input-group-addon">Usuario</div>
+                <input class="form-control" id="user" name="user" placeholder="Usuario de Github"
+                        type="text"/>
+            </div>
+            <div class="input-group">
+                <div class="input-group-addon">Repositorio</div>
+                <input class="form-control" id="repo" name="repo" placeholder="Nombre del repositorio"
+                        type="text"/>
             </div>
         </div>
         <div class="row">&nbsp;</div>

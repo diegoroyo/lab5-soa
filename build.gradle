@@ -19,8 +19,10 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
     compile "org.webjars.bowergithub.twbs:bootstrap:3.3.7"
     compile "org.webjars.bowergithub.janl:mustache.js:3.0.1"
-    compile "org.apache.camel:camel-spring-boot:2.23.0"
-    compile "org.apache.camel:camel-twitter:2.23.0"
+    compile "org.apache.camel:camel-spring-boot:3.0.0" // bump to 3.0.0 for github component
+    compile "org.apache.camel:camel-direct:3.0.0" // necessary in version 3.0.0
+    compile "org.apache.camel:camel-twitter:3.0.0"
+    compile "org.apache.camel:camel-github-starter:3.0.0-RC3"
 
     runtime "com.sun.xml.bind:jaxb-core:2.3.0"
     runtime "com.sun.xml.bind:jaxb-impl:2.3.0"
@@ -41,4 +43,5 @@ task zip(type: Zip) {
     filter { line -> line.startsWith('twitter.consumerSecret=') ? 'twitter.consumerSecret=<<ask Twitter for a key>>' : line }
     filter { line -> line.startsWith('twitter.accessToken=') ? 'twitter.accessToken=<<ask Twitter for a key>>' : line }
     filter { line -> line.startsWith('twitter.accessTokenSecret=') ? 'twitter.accessTokenSecret=<<ask Twitter for a key>>' : line }
+    filter { line -> line.startsWith('github.oauthToken=') ? 'github.oauthToken=<<ask Github for an OAuth Token>>' : line }
 }

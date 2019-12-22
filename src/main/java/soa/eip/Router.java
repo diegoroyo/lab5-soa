@@ -9,7 +9,7 @@ public class Router extends RouteBuilder {
   @Override
   public void configure() {
     from("direct:search")
-            .to("twitter://search?consumerKey={{twitter.consumerKey}}&"
+            .to("twitter-search://search?consumerKey={{twitter.consumerKey}}&"
                     + "consumerSecret={{twitter.consumerSecret}}&"
                     + "accessToken={{twitter.accessToken}}&"
                     + "accessTokenSecret={{twitter.accessTokenSecret}}");
